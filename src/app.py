@@ -186,10 +186,10 @@ if "language_selected" not in st.session_state:
     st.session_state["language_selected"] = option[0]  # Establecer el idioma predeterminado
 
 # Crear botones para la selección de idioma
-if st.button("Select Spanish"):
+if st.button(translate("Seleccionar español")):
     st.session_state["language_selected"] = option[0]
 
-if st.button("Select English"):
+if st.button(translate("Select English")):
     st.session_state["language_selected"] = option[1]
 
 # Obtener el idioma seleccionado
