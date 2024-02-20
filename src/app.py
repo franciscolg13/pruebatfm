@@ -193,7 +193,7 @@ if st.button("Select English"):
     st.session_state["language_selected"] = option[1]
 
 # Obtener el idioma seleccionado
-language = st.session_state["language_selected"]
+selected_language_msg = st.session_state["language_selected"]
 
 if "messages" not in st.session_state:
   st.session_state["messages"] = [{"role":"assistant", "content":translate("¡Hola! Soy el asistente de ExpectedFoot, tu analizador de jugadores.")}]
