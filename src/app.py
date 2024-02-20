@@ -180,12 +180,20 @@ select_language_msg = translate("Selecciona el idioma: ")
 spanish_option = translate("Español")
 english_option = translate("Inglés")
 
-option = st.button("Seleccionar idioma: ",(spanish_option, english_option), key='select_language', label_visibility="hidden")
+option = [spanish_option, english_option]
 
-if option == spanish_option:
-    language = "español"
-elif option == english_option:
-    language = "inglés"
+if "language_selected" not in st.session_state:
+    st.session_state["language_selected"] = option[0]  # Establecer el idioma predeterminado
+
+# Crear botones para la selección de idioma
+if st.button("Seleccionar español"):
+    st.session_state["language_selected"] = option[0]
+
+if st.button("Select English"):
+    st.session_state["language_selected"] = option[1]
+
+# Obtener el idioma seleccionado
+language = st.session_state["language_selected"]
 
 if "messages" not in st.session_state:
   st.session_state["messages"] = [{"role":"assistant", "content":translate("¡Hola! Soy el asistente de ExpectedFoot, tu analizador de jugadores.")}]
