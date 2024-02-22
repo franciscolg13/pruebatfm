@@ -22,9 +22,8 @@ page = """
     background-color: #169E79
 }
 
-#rounded-logo {
-    border-radius: 15px;  /* Ajusta el radio de las esquinas según sea necesario */
-    overflow: hidden;  /* Asegura que las esquinas redondeadas sean visibles */
+[data-testid="stImage"][alt="rounded-logo"] {
+    border-radius: 50px;  
 }
 </style>
 """
@@ -202,7 +201,7 @@ with col3:
 
 # Colocar la imagen en la columna central
 with col2:
-    st.image(ruta_imagen_local, width=200, use_column_width=True, output_format="PNG", key='rounded-logo')
+    st.image(ruta_imagen_local, width=200, use_column_width=True, output_format="PNG", key='rounded-logo', alt='rounded-logo')
 
 
 
