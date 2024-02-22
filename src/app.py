@@ -9,16 +9,6 @@ modelo_ruta = 'model/xg_model_decision_tree_regressor.pkl'
 
 xg_model_decision_tree_regressor = joblib.load(modelo_ruta)
 
-st.markdown(
-    f"""
-    <style>
-        body {{
-            background-color: #12EAAF;
-        }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 
 def contiene_solo_letras(cadena):
@@ -184,6 +174,16 @@ def translate(text):
 ruta_imagen_local = os.path.join("media", "logo.png")
 ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
 st.set_page_config(page_icon=ruta_imagen_local_pelota, page_title="ExpectedFoot")
+st.markdown(
+    """
+    <style>
+        body {
+            background-color: #12EAAF;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 col1, col2, col3 = st.columns([1, 3, 1])
 
 # Espacio en blanco para las columnas izquierda y derecha
