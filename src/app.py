@@ -223,12 +223,16 @@ with col2:
         ()
     with colu2:
         container_es = st.container()
-        if container_es.button(spanish_option, on_click=lambda: st.session_state.update({"language": "español"})):
-            pass
+        es_button_clicked = container_es.button(spanish_option)
+        if es_button_clicked:
+            st.session_state["language"] = "español"
+
+# Botón para Inglés en su propio contenedor
     with colu4:
         container_en = st.container()
-        if container_en.button(english_option, on_click=lambda: st.session_state.update({"language": "inglés"})):
-            pass
+        en_button_clicked = container_en.button(english_option)
+        if en_button_clicked:
+            st.session_state["language"] = "inglés"
 
 
 if "messages" not in st.session_state:
