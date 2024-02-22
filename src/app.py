@@ -218,7 +218,6 @@ with col2:
 
     # Usa contenedores independientes para cada botón
     
-
     # Botón para Español en su propio contenedor
     with colu1:
         ()
