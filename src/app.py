@@ -218,7 +218,6 @@ with col2:
 
     # Usa contenedores independientes para cada botón
     
-    st.set_column_width("colu2", 400)
 
     # Botón para Español en su propio contenedor
     with colu1:
