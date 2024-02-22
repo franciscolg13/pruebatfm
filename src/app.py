@@ -3,6 +3,8 @@ import os
 import numpy as np
 from googletrans import Translator
 import joblib
+from PIL import Image, ImageDraw
+
 
 modelo_ruta = 'model/xg_model_decision_tree_regressor.pkl'
 
@@ -25,6 +27,29 @@ page = """
 """
 
 st.markdown(page, unsafe_allow_html=True)
+
+
+
+def round_corner(image_path, output_path, radius):
+    img = Image.open(image_path).convert("RGBA")
+
+    # Crear una máscara con esquinas redondeadas
+    rounded_mask = Image.new("L", img.size, 0)
+    draw = ImageDraw.Draw(rounded_mask)
+    width, height = img.size
+    draw.pieslice([0, 0, radius * 2, radius * 2], 180, 270, fill=255)
+    draw.pieslice([0, height - radius * 2, radius * 2, height], 90, 180, fill=255)
+    draw.pieslice([width - radius * 2, 0, width, radius * 2], 270, 360, fill=255)
+    draw.pieslice([width - radius * 2, height - radius * 2, width, height], 0, 90, fill=255)
+
+    # Aplicar la máscara a la imagen
+    img.putalpha(rounded_mask)
+
+    # Guardar la imagen con esquinas redondeadas
+    img.save(output_path, "PNG")
+
+
+
 
 
 def contiene_solo_letras(cadena):
@@ -198,7 +223,7 @@ with col3:
 
 # Colocar la imagen en la columna central
 with col2:
-    st.image(ruta_imagen_local, width=200, use_column_width=True, rounded_corners=20)
+    st.image(ruta_imagen_local, width=200, use_column_width=True, image_cache="auto")
 
 
 
