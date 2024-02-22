@@ -164,19 +164,21 @@ def compile_stats(games, goals, assists, pens_att, pens_made, progressive_carrie
         
       
 translator = Translator()
-language = "español"
+if "language" not in st.session_state:
+    st.session_state["language"] = "español"
 
+
+    
 def translate(text):
-    global language
     if text != st.session_state["jugador"] and text is not None and not text.isdigit() and text!="":
         try:
             translated_text = ""
-            if language == "español":
+            if st.session_state["language"] == "español":
                 if st.session_state["jugador"]!="":
                     text=text.replace(" "+st.session_state["jugador"]+" "," the player")
                 translation = translator.translate(text, dest='es')
                 translated_text = translation.text
-            elif language == "inglés":
+            elif st.session_state["language"] == "inglés":
                 if st.session_state["jugador"]!="":
                     text=text.replace(" "+st.session_state["jugador"]+" "," el jugador")
                 translation = translator.translate(text, dest='en')
