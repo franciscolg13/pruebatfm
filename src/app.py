@@ -184,7 +184,7 @@ with col3:
 
 # Colocar la imagen en la columna central
 with col2:
-    st.image(ruta_imagen_local, width=200,use_column_width=True)
+    # st.image(ruta_imagen_local, width=200,use_column_width=True)
     st.markdown("<h1 style='text-align: center; color: white;'>ExpectedFoot</h1>", unsafe_allow_html=True)
 
 
