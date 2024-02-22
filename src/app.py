@@ -12,10 +12,8 @@ xg_model_decision_tree_regressor = joblib.load(modelo_ruta)
 
 ruta_imagen_local = os.path.join("media", "logo.png")
 ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
+st.set_page_config(page_icon=ruta_imagen_local_pelota, page_title="ExpectedFoot")
 
-st.set_page_config(
-    page_icon=ruta_imagen_local_pelota,
-)
 
 page = """
 <style>
@@ -165,20 +163,21 @@ def compile_stats(games, goals, assists, pens_att, pens_made, progressive_carrie
       
 translator = Translator()
 if "language" not in st.session_state:
-    st.session_state["language"] = "español"
-st.session_state["language"] = "español"
+    st.session_state["language"] = ""
 
 def translate(text):
-    global language
+    
     if text != st.session_state["jugador"] and text is not None and not text.isdigit() and text!="":
         try:
             translated_text = ""
+            if st.session_state["language"]=="":
+                return text
             if st.session_state["language"] == "español":
                 if st.session_state["jugador"]!="":
                     text=text.replace(" "+st.session_state["jugador"]+" "," the player")
                 translation = translator.translate(text, dest='es')
                 translated_text = translation.text
-            elif st.session_state["language"] == "inglés":
+            elif  st.session_state["language"] == "inglés":
                 if st.session_state["jugador"]!="":
                     text=text.replace(" "+st.session_state["jugador"]+" "," el jugador")
                 translation = translator.translate(text, dest='en')
@@ -189,11 +188,14 @@ def translate(text):
                 translated_text = translated_text.replace(" el jugador", " "+st.session_state["jugador"])
             if st.session_state["jugador"]!="":
                 translated_text = translated_text.replace(" the player", " "+st.session_state["jugador"])
+            if translated_text is None or translated_text=="":
+                return text
             return translated_text
         except Exception as e:
             print(f"Error en la traducción: {e}")
     else:
         return text
+
 
 
 
@@ -215,23 +217,23 @@ with col2:
     colu1, colu2, colu3, colu4 = st.columns([1.5,4,1,4])
 
     select_language_msg = translate("Selecciona el idioma: ")
-    spanish_option = translate("Español")
-    english_option = translate("English")
+    spanish_option = "Español"
+    english_option = "English"
 
     # Botón para Español en su propio contenedor
     with colu1:
         ()
     with colu2:
         container_es = st.container()
-        if container_es.button(spanish_option):
-            language = "español"
+        if container_es.button(spanish_option,key="A"):
+            st.session_state["language"] = "español"
     with colu3:
         ()
     # Botón para Inglés en su propio contenedor
     with colu4:
         container_en = st.container()
-        if container_en.button(english_option):
-            language = "inglés"
+        if container_en.button(english_option,key="B"):
+            st.session_state["language"] = "inglés"
 
 
 if "messages" not in st.session_state:
@@ -243,8 +245,8 @@ if "messages" in st.session_state:
     st.chat_message(msg["role"],avatar=msg["avatar"]).write(translate(msg["content"]))
 
 
-   if user_input := st.chat_input():
-     if st.session_state["messages"][-1]["role"] != "user":
+#    if user_input := st.chat_input():
+    if user_input := st.session_state["messages"][-1]["role"] != "user":
         st.session_state["messages"].append({"role": "user","avatar":"🦖","content": user_input})
         st.chat_message("user",avatar="🦖").write(user_input)
         responseMessage = translate(response(user_input))
