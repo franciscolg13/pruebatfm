@@ -226,8 +226,7 @@ with col2:
         container_es = st.container()
         if container_es.button(spanish_option):
             language = "español"
-    with colu3:
-        ()
+    
     # Botón para Inglés en su propio contenedor
     with colu4:
         container_en = st.container()
