@@ -23,7 +23,10 @@ page = """
     background-color: #169E79
 }
 .sidebar{
-    background-color: #244155; /* Cambia el color según tus preferencias */
+    background-color: #244155; 
+}
+.css-1ytj5ow {
+    background-color: #244155; /* Puede que necesites ajustar esto */
 }
 </style>
 """
