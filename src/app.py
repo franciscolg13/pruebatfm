@@ -214,9 +214,9 @@ select_language_msg = translate("Selecciona el idioma: ")
 spanish_option = translate("Español")
 english_option = translate("Inglés")
 
-option = st.sidebar.radio("Seleccionar idioma: ",(spanish_option, english_option),
+option = st.sidebar.radio("Seleccionar idioma: ", (spanish_option, english_option),
                           key='select_language', label_visibility="hidden",
-                          container_class="radio-button-container")
+                          format_func=lambda x: f'<div class="radio-button-container">{x}</div>')
 if option == spanish_option:
     language = "español"
 elif option == english_option:
