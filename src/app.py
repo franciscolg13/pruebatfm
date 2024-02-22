@@ -212,14 +212,15 @@ with col2:
 
 
 select_language_msg = translate("Selecciona el idioma: ")
-spanish_option = translate("Español")
-english_option = translate("Inglés")
+spanish_button = st.button(translate("Español"))
+english_button = st.button(translate("Inglés"))
 
-if st.sidebar.button("Español"):
-    language = "español"
-elif st.sidebar.button("Inglés"):
-    language = "inglés"
+if spanish_button:
+    st.session_state["language"] = "español"
+elif english_button:
+    st.session_state["language"] = "inglés"
 
+language = st.session_state.get("language", "inglés")  # Default to English if not set
 # if option == spanish_option:
 #     language = "español"
 # elif option == english_option:
