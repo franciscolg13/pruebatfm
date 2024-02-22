@@ -217,16 +217,17 @@ with col2:
     english_option = translate("Inglés")
 
     # Usa contenedores independientes para cada botón
-    container_es = st.container()
-    container_en = st.container()
+    
 
     # Botón para Español en su propio contenedor
     with colu1:
+        container_es = st.container()
         if container_es.button(spanish_option):
             language = "español"
 
     # Botón para Inglés en su propio contenedor
     with colu2:
+        container_en = st.container()
         if container_en.button(english_option):
             language = "inglés"
 
