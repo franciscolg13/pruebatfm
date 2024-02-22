@@ -3,14 +3,20 @@ import os
 import numpy as np
 from googletrans import Translator
 import joblib
-import streamlit.components.v1 as components
-
 
 modelo_ruta = 'model/xg_model_decision_tree_regressor.pkl'
 
 xg_model_decision_tree_regressor = joblib.load(modelo_ruta)
 
+page= """
+<style>
+[data-testid=stAppViewContainer]{
+background-color: #12EAAF
+}
+</style>
+"""
 
+st.markdown(page, unsafe_allow_html=True)
 
 def contiene_solo_letras(cadena):
     return all(caracter.isalpha() or caracter.isspace() for caracter in cadena)
@@ -176,16 +182,6 @@ ruta_imagen_local = os.path.join("media", "logo.png")
 ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
 st.set_page_config(page_icon=ruta_imagen_local_pelota, page_title="ExpectedFoot")
 
-html_code = f"""
-    <style>
-        body {{
-            background-color: #12EAAF;
-        }}
-    </style>
-"""
-
-# Mostrar el contenido HTML en la aplicación
-components.html(html_code)
 
 col1, col2, col3 = st.columns([1, 3, 1])
 
