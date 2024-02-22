@@ -3,7 +3,6 @@ import os
 import numpy as np
 from googletrans import Translator
 import joblib
-from PIL import Image, ImageDraw
 
 
 modelo_ruta = 'model/xg_model_decision_tree_regressor.pkl'
@@ -27,26 +26,6 @@ page = """
 """
 
 st.markdown(page, unsafe_allow_html=True)
-
-
-
-def round_corner(image_path, output_path, radius):
-    img = Image.open(image_path).convert("RGBA")
-    rounded_img = Image.new("RGBA", img.size, (255, 255, 255, 0))
-    draw = ImageDraw.Draw(rounded_img)
-    draw.pieslice((0, 0, radius * 2, radius * 2), 180, 270, fill=(255, 255, 255, 255))
-    draw.pieslice((0, img.size[1] - radius * 2, radius * 2, img.size[1]), 90, 180, fill=(255, 255, 255, 255))
-    draw.pieslice((img.size[0] - radius * 2, 0, img.size[0], radius * 2), 270, 360, fill=(255, 255, 255, 255))
-    draw.pieslice((img.size[0] - radius * 2, img.size[1] - radius * 2, img.size[0], img.size[1]), 0, 90, fill=(255, 255, 255, 255))
-    rounded_img.paste(img, (radius, radius), img)
-    rounded_img.save(output_path, "PNG")
-
-# Redondear la imagen original y guardarla en un nuevo archivo
-round_corner(ruta_imagen_local, ruta_imagen_local, radius=20)
-
-
-
-
 
 
 def contiene_solo_letras(cadena):
