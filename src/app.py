@@ -14,7 +14,6 @@ ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
 
 st.set_page_config(
     page_icon=ruta_imagen_local_pelota,
-    # page_title="ExpectedFoot"
 )
 
 # Crear un div contenedor para superponer la imagen redondeada
