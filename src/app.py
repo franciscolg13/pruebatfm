@@ -223,15 +223,14 @@ with col2:
         ()
     with colu2:
         container_es = st.container()
-        es_button_clicked = container_es.button(spanish_option)
-        if es_button_clicked:
+        if container_es.button(spanish_option):
             st.session_state["language"] = "español"
-
-# Botón para Inglés en su propio contenedor
+    with colu3:
+        ()
+    # Botón para Inglés en su propio contenedor
     with colu4:
         container_en = st.container()
-        en_button_clicked = container_en.button(english_option)
-        if en_button_clicked:
+        if container_en.button(english_option):
             st.session_state["language"] = "inglés"
 
 
