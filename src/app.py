@@ -4,6 +4,7 @@ import numpy as np
 from googletrans import Translator
 import joblib
 
+st._clear_widget_state()
 
 modelo_ruta = 'model/xg_model_decision_tree_regressor.pkl'
 
