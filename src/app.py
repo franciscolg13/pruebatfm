@@ -215,15 +215,15 @@ select_language_msg = translate("Selecciona el idioma: ")
 spanish_option = translate("Español")
 english_option = translate("Inglés")
 
-option = st.sidebar.button("Seleccionar idioma: ", (spanish_option, english_option),
-                          key='select_language', label_visibility="hidden",
-                          format_func=lambda x: f'{x}')
-
-
-if option == spanish_option:
+if st.sidebar.button("Español"):
     language = "español"
-elif option == english_option:
+elif st.sidebar.button("Inglés"):
     language = "inglés"
+
+# if option == spanish_option:
+#     language = "español"
+# elif option == english_option:
+#     language = "inglés"
 
 if "messages" not in st.session_state:
   st.session_state["messages"] = [{"role":"assistant","avatar":"⚽" ,"content":translate("¡Hola! Soy el asistente de ExpectedFoot, tu analizador de jugadores.")}]
