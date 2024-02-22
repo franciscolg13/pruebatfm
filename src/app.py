@@ -212,16 +212,13 @@ with col2:
 
 
 select_language_msg = translate("Selecciona el idioma: ")
-spanish_button = st.button(translate("Español"))
-english_button = st.button(translate("Inglés"))
+spanish_option = translate("Español")
+english_option = translate("Inglés")
 
-# Obtener el idioma seleccionado
-selected_language = st.session_state.get("language", "Español")
-
-if spanish_button:
-    st.session_state["language"] = "español"
-elif english_button:
-    st.session_state["language"] = "inglés"
+if st.sidebar.button("Español"):
+    language = "español"
+elif st.sidebar.button("Inglés"):
+    language = "inglés"
 # 
 # if option == spanish_option:
 #     language = "español"
