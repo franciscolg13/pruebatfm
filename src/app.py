@@ -210,7 +210,7 @@ with col2:
 
 
 
-    colu1, colu2, colu3, colu4 = st.columns([1,4,1,4])
+    colu1, colu2, colu3, colu4 = st.columns([2,4,1,4])
 
     select_language_msg = translate("Selecciona el idioma: ")
     spanish_option = translate("Spanish")
