@@ -226,12 +226,13 @@ with col2:
         container_es = st.container()
         if container_es.button(spanish_option):
             language = "español"
-        container_en = st.container()
-        if container_en.button(english_option):
-            language = "inglés"
     with colu3:
         ()
     # Botón para Inglés en su propio contenedor
+    with colu4:
+        container_en = st.container()
+        if container_en.button(english_option):
+            language = "inglés"
 
 
 if "messages" not in st.session_state:
