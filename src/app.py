@@ -14,29 +14,35 @@ ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
 
 st.set_page_config(
     page_icon=ruta_imagen_local_pelota,
+    # page_title="ExpectedFoot"
 )
 
-custom_style = f"""
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border-radius: 10px;
-    background-color: #169E79;
-"""
-
-# Aplicar el estilo utilizando st.markdown
+# Crear un div contenedor para superponer la imagen redondeada
 st.markdown(
     f"""
-    <div style="{custom_style}">
-        <img src="{ruta_imagen_local}" alt="Logo" style="width:100%; height:auto;">
+    <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        border-radius: 10px;
+        background-color: #169E79;
+        position: relative;
+    ">
+        <img src="{ruta_imagen_local}" alt="Logo" style="width:100%; height:auto; border-radius: 10px;">
+        <div style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 10px;
+            border: 10px solid #169E79;
+        "></div>
     </div>
     """,
     unsafe_allow_html=True
 )
-
-
-# st.markdown(page, unsafe_allow_html=True)
 
 def contiene_solo_letras(cadena):
     return all(caracter.isalpha() or caracter.isspace() for caracter in cadena)
