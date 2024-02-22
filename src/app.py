@@ -171,7 +171,7 @@ def translate(text):
         return text
 
 
-# ruta_imagen_local = os.path.join("media", "logo_redondeado.png")
+ruta_imagen_local = os.path.join("media", "logo.png")
 ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
 st.set_page_config(page_icon=ruta_imagen_local_pelota, page_title="ExpectedFoot")
 col1, col2, col3 = st.columns([1, 3, 1])
@@ -184,7 +184,7 @@ with col3:
 
 # Colocar la imagen en la columna central
 with col2:
-    # st.image(ruta_imagen_local, width=200,use_column_width=True)
+    st.image(ruta_imagen_local, width=200,use_column_width=True)
     st.markdown("<h1 style='text-align: center; color: white;'>ExpectedFoot</h1>", unsafe_allow_html=True)
 
 
