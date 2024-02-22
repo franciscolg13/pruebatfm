@@ -10,17 +10,6 @@ modelo_ruta = 'model/xg_model_decision_tree_regressor.pkl'
 xg_model_decision_tree_regressor = joblib.load(modelo_ruta)
 
 
-st.markdown(
-    """
-    <style>
-        body {
-            background-color: #12EAAF;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 
 def contiene_solo_letras(cadena):
     return all(caracter.isalpha() or caracter.isspace() for caracter in cadena)
@@ -42,7 +31,7 @@ if "pens_made" not in st.session_state:
 
 
 correct_responses = [
-    "Introduce el nombre del jugador que desea analizar:",
+    "Introduce el nombre del jugador que desea analizar",
   f"¿Cuántos partidos ha jugado? ",
  f"¿Cuántos goles ha marcado?",
  f"¿Cuántas asistencias ha realizado? ",
@@ -145,15 +134,14 @@ def compile_stats(games, goals, assists, pens_att, pens_made, progressive_carrie
     new_data = [[games, goals, assists, goals_assists, pens_att, pens_made, goals_pens, progressive_carries]]
     prediction = xg_model_decision_tree_regressor.predict(new_data)
     if st.session_state["pens_made"] == 0:
-        return  (f"> el jugador ha marcado {goals} goles en {games} partidos, asistiendo {assists} veces, ha ejecutado {pens_att} penaltis, de los cuales no marcado ninguno y los goles marcados en jugada han sido {goals_pens}.\n El resultado de los goles esperados del jugador es de {prediction[0]:.2f} goles por temporada.")
+        return  (f"> el jugador ha marcado {goals} goles en {games} partidos, asistiendo {assists} veces, ha ejecutado {pens_att} penaltis, de los cuales no marcado ninguno y los goles marcados en jugada han sido {goals_pens}.\n **El resultado de los goles esperados del jugador es de {prediction[0]:.2f} goles por temporada.**")
 
     else:
-        return (f"> el jugador ha marcado {goals} goles en {games} partidos, asistiendo {assists} veces, ha ejecutado {pens_att} penaltis, de los cuales ha marcado {pens_made} y los goles marcados en jugada han sido {goals_pens}.\n El resultado de los goles esperados del jugador es de {prediction[0]:.2f} goles por temporada.")
+        return (f"> el jugador ha marcado {goals} goles en {games} partidos, asistiendo {assists} veces, ha ejecutado {pens_att} penaltis, de los cuales ha marcado {pens_made} y los goles marcados en jugada han sido {goals_pens}.\n **El resultado de los goles esperados del jugador es de {prediction[0]:.2f} goles por temporada.**")
         
       
 translator = Translator()
-language = "español"
-
+language = "inglés"
 
 def translate(text):
     global language
@@ -183,46 +171,56 @@ def translate(text):
         return text
 
 
-ruta_imagen_local = os.path.join("media", "logo.png")
+ruta_imagen_local = os.path.join("media", "logo_redondeado.png")
+ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
+st.set_page_config(page_icon=ruta_imagen_local_pelota, page_title="ExpectedFoot")
+col1, col2, col3 = st.columns([1, 3, 1])
 
-st.image(ruta_imagen_local, width=400)
-st.title("ExpectedFoot")
+# Espacio en blanco para las columnas izquierda y derecha
+with col1:
+    st.write("")
+with col3:
+    st.write("")
+
+# Colocar la imagen en la columna central
+with col2:
+    st.image(ruta_imagen_local, width=200,use_column_width=True)
+    st.markdown("<h1 style='text-align: center; color: white;'>ExpectedFoot</h1>", unsafe_allow_html=True)
+
+
+    # Título centrado
+    #st.title("ExpectedFoot")
+
+
+
 
 select_language_msg = translate("Selecciona el idioma: ")
 spanish_option = translate("Español")
 english_option = translate("Inglés")
 
-option = [spanish_option, english_option]
+option = st.sidebar.radio("Seleccionar idioma: ",(spanish_option, english_option), key='select_language', label_visibility="hidden")
 
-if "language_selected" not in st.session_state:
-    st.session_state["language_selected"] = option[0]  # Establecer el idioma predeterminado
-
-# Crear botones para la selección de idioma
-if st.button(translate("Seleccionar español")):
-    st.session_state["language_selected"] = option[0]
-
-if st.button(translate("Select English")):
-    st.session_state["language_selected"] = option[1]
-
-# Obtener el idioma seleccionado
-selected_language_msg = st.selectbox(translate("Selecciona el idioma:"), option)
+if option == spanish_option:
+    language = "español"
+elif option == english_option:
+    language = "inglés"
 
 if "messages" not in st.session_state:
-  st.session_state["messages"] = [{"role":"assistant", "content":translate("¡Hola! Soy el asistente de ExpectedFoot, tu analizador de jugadores.")}]
-  st.session_state["messages"].append({"role":"assistant", "content":translate(correct_responses[0])})
+  st.session_state["messages"] = [{"role":"assistant","avatar":"⚽" ,"content":translate("¡Hola! Soy el asistente de ExpectedFoot, tu analizador de jugadores.")}]
+  st.session_state["messages"].append({"role":"assistant", "avatar":"⚽","content":translate(correct_responses[0])})
 
 if "messages" in st.session_state:
    for msg in st.session_state["messages"]:
-    st.chat_message(msg["role"]).write(translate(msg["content"]))
+    st.chat_message(msg["role"],avatar=msg["avatar"]).write(translate(msg["content"]))
 
 
    if user_input := st.chat_input():
      if st.session_state["messages"][-1]["role"] != "user":
-        st.session_state["messages"].append({"role": "user", "content": user_input})
-        st.chat_message("user").write(user_input)
+        st.session_state["messages"].append({"role": "user","avatar":"🦖","content": user_input})
+        st.chat_message("user",avatar="🦖").write(user_input)
         responseMessage = translate(response(user_input))
-        st.session_state["messages"].append({"role": "assistant", "content": responseMessage})
-        st.chat_message("assistant").write(responseMessage)
+        st.session_state["messages"].append({"role": "assistant","avatar":"⚽", "content": responseMessage})
+        st.chat_message("assistant",avatar="⚽").write(responseMessage)
         if responseMessage==correct_responses[7]:
             newPrediction=compile_stats( st.session_state["games"],
                                         st.session_state["goals"],
@@ -231,7 +229,8 @@ if "messages" in st.session_state:
                                         st.session_state["pens_made"], 
                                         st.session_state["progressive_carries"])
             st.session_state["paso"]=pasos[0]
-            st.session_state["messages"].append({"role": "assistant", "content":translate(newPrediction)})
-            st.chat_message("assistant").write(translate(newPrediction))
-            st.session_state["messages"].append({"role":"assistant", "content":translate(correct_responses[0])})
-            st.chat_message("assistant").write(translate(correct_responses[0]))
+            st.session_state["messages"].append({"role": "assistant","avatar":"⚽" , "content":translate(newPrediction)})
+            st.chat_message("assistant",avatar="⚽").write(translate(newPrediction))
+            st.session_state["messages"].append({"role":"assistant", "avatar":"⚽" ,"content":translate("Si quiere analizar otro jugador introduzca su nombre")})
+            st.chat_message("assistant",avatar="⚽").write(translate("Si quiere analizar otro jugador introduzca su nombre"))
+
