@@ -164,21 +164,19 @@ def compile_stats(games, goals, assists, pens_att, pens_made, progressive_carrie
         
       
 translator = Translator()
-if "language" not in st.session_state:
-    st.session_state["language"] = "español"
-
-
+language = "español"
 
 def translate(text):
+    global language
     if text != st.session_state["jugador"] and text is not None and not text.isdigit() and text!="":
         try:
             translated_text = ""
-            if st.session_state["language"] == "español":
+            if language == "español":
                 if st.session_state["jugador"]!="":
                     text=text.replace(" "+st.session_state["jugador"]+" "," the player")
                 translation = translator.translate(text, dest='es')
                 translated_text = translation.text
-            elif st.session_state["language"] == "inglés":
+            elif language == "inglés":
                 if st.session_state["jugador"]!="":
                     text=text.replace(" "+st.session_state["jugador"]+" "," el jugador")
                 translation = translator.translate(text, dest='en')
@@ -224,14 +222,14 @@ with col2:
     with colu2:
         container_es = st.container()
         if container_es.button(spanish_option):
-            st.session_state["language"] = "español"
+            language = "español"
     with colu3:
         ()
     # Botón para Inglés en su propio contenedor
     with colu4:
         container_en = st.container()
         if container_en.button(english_option):
-            st.session_state["language"] = "inglés"
+            language = "inglés"
 
 
 if "messages" not in st.session_state:
