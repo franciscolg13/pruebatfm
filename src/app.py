@@ -18,15 +18,23 @@ st.set_page_config(
 
 page = f"""
 <style>
-    [data-testid="stImage"][alt="Logo"] {{
+    .custom-image-container {{
+        position: relative;
+        overflow: hidden;
         border-radius: 10px;
-    }}
-
-    [data-testid=stAppViewContainer] {{
         background-color: #169E79;
     }}
+
+    .custom-image-container img {{
+        width: 100%;
+        height: auto;
+    }}
 </style>
+<div class="custom-image-container">
+    <img src="{ruta_imagen_local}" alt="Logo">
+</div>
 """
+
 
 st.markdown(page, unsafe_allow_html=True)
 
