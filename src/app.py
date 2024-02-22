@@ -22,11 +22,9 @@ page = """
 [data-testid=stAppViewContainer]{
     background-color: #169E79
 }
-.radio-button-container {
-            background-color: #0b2639;  
-            padding: 10px; 
-            border-radius: 10px;  
-        }
+.sidebar .sidebar-content {
+    background-color: #244155; /* Cambia el color según tus preferencias */
+}
 </style>
 """
 
