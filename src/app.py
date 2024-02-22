@@ -210,7 +210,7 @@ with col2:
 
 
 
-    colu1, colu2, colu3, colu4 = st.beta_columns(4)
+    colu1, colu2, colu3, colu4 = st.columns([1,2,3,4])
 
     select_language_msg = translate("Selecciona el idioma: ")
     spanish_option = translate("Español")
@@ -220,12 +220,15 @@ with col2:
     
 
     # Botón para Español en su propio contenedor
+    with colu1:
+        ()
     with colu2:
         container_es = st.container()
         if container_es.button(spanish_option):
             language = "español"
-
-# Contenedor para inglés en colu4
+    with colu3:
+        ()
+    # Botón para Inglés en su propio contenedor
     with colu4:
         container_en = st.container()
         if container_en.button(english_option):
