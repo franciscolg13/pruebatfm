@@ -22,7 +22,7 @@ page = """
 [data-testid=stAppViewContainer]{
     background-color: #169E79
 }
-.sidebar .sidebar-content {
+.sidebar{
     background-color: #244155; /* Cambia el color según tus preferencias */
 }
 </style>
