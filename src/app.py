@@ -16,24 +16,24 @@ st.set_page_config(
     page_icon=ruta_imagen_local_pelota,
 )
 
-page = f"""
-<style>
-    .custom-image-container {{
-        position: relative;
-        overflow: hidden;
-        border-radius: 100px;
-        background-color: #169E79;
-    }}
-
-    .custom-image-container img {{
-        width: 100%;
-        height: auto;
-    }}
-</style>
-<div class="custom-image-container">
-    <img src="{ruta_imagen_local}" alt="Logo">
-</div>
+custom_style = f"""
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #169E79;
 """
+
+# Aplicar el estilo utilizando st.markdown
+st.markdown(
+    f"""
+    <div style="{custom_style}">
+        <img src="{ruta_imagen_local}" alt="Logo" style="width:100%; height:auto;">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
 st.markdown(page, unsafe_allow_html=True)
