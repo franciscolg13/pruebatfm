@@ -173,7 +173,18 @@ def translate(text):
 
 ruta_imagen_local = os.path.join("media", "logo.png")
 ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
-st.set_page_config(page_icon=ruta_imagen_local_pelota, page_title="ExpectedFoot", backgroundColor="#12EAAF")
+st.set_page_config(page_icon=ruta_imagen_local_pelota, page_title="ExpectedFoot")
+
+st.markdown(
+    """
+    <style>
+        body {
+            background-color: #12EAAF;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 col1, col2, col3 = st.columns([1, 3, 1])
 
