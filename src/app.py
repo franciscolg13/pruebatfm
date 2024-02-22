@@ -216,7 +216,6 @@ with col2:
 
     select_language_msg = translate("Selecciona el idioma: ")
     spanish_option = translate("Español")
-    spanish_option_translated = translate(spanish_option, st.session_state["language"])
     english_option = translate("English")
 
     # Botón para Español en su propio contenedor
@@ -224,15 +223,12 @@ with col2:
         ()
     with colu2:
         container_es = st.container()
-        if container_es.button(spanish_option):
-            st.session_state["language"] = "español"
-    with colu3:
-        ()
-    # Botón para Inglés en su propio contenedor
+        if container_es.button(spanish_option, on_click=lambda: st.session_state.update({"language": "español"})):
+            pass
     with colu4:
         container_en = st.container()
-        if container_en.button(english_option):
-            st.session_state["language"] = "inglés"
+        if container_en.button(english_option, on_click=lambda: st.session_state.update({"language": "inglés"})):
+            pass
 
 
 if "messages" not in st.session_state:
