@@ -216,6 +216,7 @@ with col2:
 
     select_language_msg = translate("Selecciona el idioma: ")
     spanish_option = translate("Español")
+    spanish_option_translated = translate(spanish_option, st.session_state["language"])
     english_option = translate("English")
 
     # Botón para Español en su propio contenedor
