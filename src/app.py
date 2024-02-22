@@ -21,7 +21,7 @@ page = f"""
     .custom-image-container {{
         position: relative;
         overflow: hidden;
-        border-radius: 10px;
+        border-radius: 100px;
         background-color: #169E79;
     }}
 
