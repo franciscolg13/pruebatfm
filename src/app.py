@@ -215,17 +215,11 @@ select_language_msg = translate("Selecciona el idioma: ")
 spanish_option = translate("Español")
 english_option = translate("Inglés")
 
-# Definir las opciones de idioma
-language_options = [spanish_option, english_option]
+if st.sidebar.button("Español"):
+    language = "español"
+elif st.sidebar.button("Inglés"):
+    language = "inglés"
 
-# Variable de estado para rastrear el idioma seleccionado
-selected_language = st.sidebar.button(spanish_option)
-
-# Mostrar los botones y actualizar la variable de estado
-for option in language_options:
-    selected_language = st.sidebar.button(option)
-
-language = "español" if selected_language else "inglés"
 # if option == spanish_option:
 #     language = "español"
 # elif option == english_option:
