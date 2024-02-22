@@ -32,21 +32,18 @@ st.markdown(page, unsafe_allow_html=True)
 
 def round_corner(image_path, output_path, radius):
     img = Image.open(image_path).convert("RGBA")
+    rounded_img = Image.new("RGBA", img.size, (255, 255, 255, 0))
+    draw = ImageDraw.Draw(rounded_img)
+    draw.pieslice((0, 0, radius * 2, radius * 2), 180, 270, fill=(255, 255, 255, 255))
+    draw.pieslice((0, img.size[1] - radius * 2, radius * 2, img.size[1]), 90, 180, fill=(255, 255, 255, 255))
+    draw.pieslice((img.size[0] - radius * 2, 0, img.size[0], radius * 2), 270, 360, fill=(255, 255, 255, 255))
+    draw.pieslice((img.size[0] - radius * 2, img.size[1] - radius * 2, img.size[0], img.size[1]), 0, 90, fill=(255, 255, 255, 255))
+    rounded_img.paste(img, (radius, radius), img)
+    rounded_img.save(output_path, "PNG")
 
-    # Crear una máscara con esquinas redondeadas
-    rounded_mask = Image.new("L", img.size, 0)
-    draw = ImageDraw.Draw(rounded_mask)
-    width, height = img.size
-    draw.pieslice([0, 0, radius * 2, radius * 2], 180, 270, fill=255)
-    draw.pieslice([0, height - radius * 2, radius * 2, height], 90, 180, fill=255)
-    draw.pieslice([width - radius * 2, 0, width, radius * 2], 270, 360, fill=255)
-    draw.pieslice([width - radius * 2, height - radius * 2, width, height], 0, 90, fill=255)
+# Redondear la imagen original y guardarla en un nuevo archivo
+round_corner(ruta_imagen_local, ruta_imagen_local, radius=20)
 
-    # Aplicar la máscara a la imagen
-    img.putalpha(rounded_mask)
-
-    # Guardar la imagen con esquinas redondeadas
-    img.save(output_path, "PNG")
 
 
 
@@ -223,7 +220,7 @@ with col3:
 
 # Colocar la imagen en la columna central
 with col2:
-    st.image(ruta_imagen_local, width=200, use_column_width=True, image_cache="auto")
+    st.image(ruta_imagen_local, width=200, use_column_width=True)
 
 
 
