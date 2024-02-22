@@ -14,17 +14,19 @@ ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
 
 st.set_page_config(
     page_icon=ruta_imagen_local_pelota,
-    # page_title="ExpectedFoot"
 )
 
-page = """
+page = f"""
 <style>
-[data-testid=stAppViewContainer]{
-    background-color: #169E79;
-    border-radius: 10px;
-}
+    img[alt="ExpectedFoot"] {{
+        background-color: #169E79;
+        border-radius: 10px;
+    }}
 </style>
 """
+
+
+
 
 st.markdown(page, unsafe_allow_html=True)
 
