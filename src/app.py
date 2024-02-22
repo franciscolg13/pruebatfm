@@ -212,17 +212,21 @@ with col2:
 
 
 select_language_msg = translate("Selecciona el idioma: ")
-spanish_button = st.button(translate("Español"))
-english_button = st.button(translate("Inglés"))
-
-colu1, colu2 = st.columns(2)
+col1, col2 = st.columns(2)
 
 # Define the language buttons in each column
-with colu1:
+with col1:
     spanish_button = st.button(translate("Español"))
 
-with colu2:
+with col2:
     english_button = st.button(translate("Inglés"))
+# spanish_button = st.button(translate("Español"))
+# english_button = st.button(translate("Inglés"))
+
+# if spanish_button:
+#     st.session_state["language"] = "español"
+# elif english_button:
+#     st.session_state["language"] = "inglés"
 
 language = st.session_state.get("language", "inglés")  # Default to English if not set
 
