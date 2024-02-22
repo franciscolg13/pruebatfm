@@ -226,7 +226,7 @@ with col2:
             language = "español"
 
     # Botón para Inglés en su propio contenedor
-    with colu1:
+    with colu2:
         if container_en.button(english_option):
             language = "inglés"
 
