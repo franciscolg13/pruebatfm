@@ -164,7 +164,7 @@ def compile_stats(games, goals, assists, pens_att, pens_made, progressive_carrie
         
       
 translator = Translator()
-language = "inglés"
+language = "español"
 
 def translate(text):
     global language
