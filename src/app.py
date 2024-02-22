@@ -17,10 +17,11 @@ st.set_page_config(
     # page_title="ExpectedFoot"
 )
 
-page= """
+page = """
 <style>
 [data-testid=stAppViewContainer]{
-background-color: #169E79
+    background-color: #169E79;
+    border-radius: 10px;
 }
 </style>
 """
