@@ -168,7 +168,7 @@ if "language" not in st.session_state:
     st.session_state["language"] = "español"
 
 
-    
+
 def translate(text):
     if text != st.session_state["jugador"] and text is not None and not text.isdigit() and text!="":
         try:
@@ -224,14 +224,14 @@ with col2:
     with colu2:
         container_es = st.container()
         if container_es.button(spanish_option):
-            language = "español"
+            st.session_state["language"] = "español"
     with colu3:
         ()
     # Botón para Inglés en su propio contenedor
     with colu4:
         container_en = st.container()
         if container_en.button(english_option):
-            language = "inglés"
+            st.session_state["language"] = "inglés"
 
 
 if "messages" not in st.session_state:
