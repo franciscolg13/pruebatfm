@@ -23,9 +23,9 @@ page = """
     background-color: #169E79
 }
 .radio-button-container {
-            background-color: #FFFFFF;  /* Set the background color */
-            padding: 10px;  /* Add padding for spacing */
-            border-radius: 10px;  /* Add border-radius for rounded corners */
+            background-color: #0b2639;  
+            padding: 10px; 
+            border-radius: 10px;  
         }
 </style>
 """
