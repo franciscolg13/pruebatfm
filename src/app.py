@@ -8,6 +8,15 @@ modelo_ruta = 'model/xg_model_decision_tree_regressor.pkl'
 
 xg_model_decision_tree_regressor = joblib.load(modelo_ruta)
 
+
+ruta_imagen_local = os.path.join("media", "logo.png")
+ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
+
+st.set_page_config(
+    page_icon=ruta_imagen_local_pelota,
+    page_title="ExpectedFoot"
+)
+
 page= """
 <style>
 [data-testid=stAppViewContainer]{
@@ -178,9 +187,8 @@ def translate(text):
         return text
 
 
-ruta_imagen_local = os.path.join("media", "logo.png")
-ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
-st.set_page_config(page_icon=ruta_imagen_local_pelota, page_title="ExpectedFoot")
+
+# st.set_page_config(page_icon=ruta_imagen_local_pelota, page_title="ExpectedFoot")
 
 
 col1, col2, col3 = st.columns([1, 3, 1])
