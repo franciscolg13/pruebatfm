@@ -20,7 +20,7 @@ st.set_page_config(
 page= """
 <style>
 [data-testid=stAppViewContainer]{
-background-color: #15AA6D
+background-color: #169E79
 }
 </style>
 """
@@ -188,9 +188,6 @@ def translate(text):
 
 
 
-# st.set_page_config(page_icon=ruta_imagen_local_pelota, page_title="ExpectedFoot")
-
-
 col1, col2, col3 = st.columns([1, 3, 1])
 
 # Espacio en blanco para las columnas izquierda y derecha
@@ -204,9 +201,6 @@ with col2:
     st.image(ruta_imagen_local, width=200,use_column_width=True)
     st.markdown("<h1 style='text-align: center; color: white;'>ExpectedFoot</h1>", unsafe_allow_html=True)
 
-
-    # Título centrado
-    #st.title("ExpectedFoot")
 
 
 
