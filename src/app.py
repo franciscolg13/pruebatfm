@@ -36,7 +36,7 @@ st.markdown(
 )
 
 
-st.markdown(page, unsafe_allow_html=True)
+# st.markdown(page, unsafe_allow_html=True)
 
 def contiene_solo_letras(cadena):
     return all(caracter.isalpha() or caracter.isspace() for caracter in cadena)
