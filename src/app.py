@@ -13,7 +13,7 @@ ruta_imagen_local = os.path.join("media", "logo.png")
 ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
 
 st.set_page_config(
-    page_icon=ruta_imagen_local_pelota,
+    page_icon=ruta_imagen_local,
 )
 
 page = """
