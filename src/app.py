@@ -178,7 +178,7 @@ st.set_page_config(page_icon=ruta_imagen_local_pelota, page_title="ExpectedFoot"
 st.markdown(
     """
     <style>
-        body {
+        .css-1l02zno {
             background-color: #12EAAF;
         }
     </style>
