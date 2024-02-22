@@ -245,7 +245,7 @@ if "messages" in st.session_state:
     st.chat_message(msg["role"],avatar=msg["avatar"]).write(translate(msg["content"]))
 
 
-user_input = st.text_input("")
+user_input = st.text_area("Introduce tu respuesta aquí:")
 
 if user_input:
     if st.session_state["messages"][-1]["role"] != "user":
