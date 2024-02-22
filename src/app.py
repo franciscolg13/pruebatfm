@@ -216,7 +216,7 @@ spanish_button = st.button(translate("Español"))
 english_button = st.button(translate("Inglés"))
 
 # Obtener el idioma seleccionado
-selected_language = st.session_state.get("language", "inglés")
+selected_language = st.session_state.get("language", "Español")
 
 if spanish_button:
     st.session_state["language"] = "español"
