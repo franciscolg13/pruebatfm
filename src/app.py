@@ -16,32 +16,15 @@ st.set_page_config(
     page_icon=ruta_imagen_local_pelota,
 )
 
-# Crear un div contenedor para superponer la imagen redondeada
-st.markdown(
-    f"""
-    <div style="
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        border-radius: 10px;
-        background-color: #169E79;
-        position: relative;
-    ">
-        <img src="{ruta_imagen_local}" alt="Logo" style="width:100%; height:auto; border-radius: 10px;">
-        <div style="
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 10px;
-            border: 10px solid #169E79;
-        "></div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+page= """
+<style>
+[data-testid=stAppViewContainer]{
+background-color: #169E79
+}
+</style>
+"""
+
+st.markdown(page, unsafe_allow_html=True)
 
 def contiene_solo_letras(cadena):
     return all(caracter.isalpha() or caracter.isspace() for caracter in cadena)
@@ -215,7 +198,6 @@ with col3:
 # Colocar la imagen en la columna central
 with col2:
     st.image(ruta_imagen_local, width=200,use_column_width=True)
-    # st.markdown("<h1 style='text-align: center; color: white;'>ExpectedFoot</h1>", unsafe_allow_html=True)
 
 
 
