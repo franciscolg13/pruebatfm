@@ -215,9 +215,11 @@ select_language_msg = translate("Selecciona el idioma: ")
 spanish_option = translate("Español")
 english_option = translate("Inglés")
 
-option = st.sidebar.selectbox("Seleccionar idioma: ", (spanish_option, english_option),
+option = st.sidebar.button("Seleccionar idioma: ", (spanish_option, english_option),
                           key='select_language', label_visibility="hidden",
                           format_func=lambda x: f'{x}')
+
+
 if option == spanish_option:
     language = "español"
 elif option == english_option:
