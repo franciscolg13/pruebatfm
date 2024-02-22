@@ -211,21 +211,21 @@ with col2:
 
 
 
-select_language_msg = translate("Selecciona el idioma: ")
-spanish_option = translate("Español")
-english_option = translate("Inglés")
+    select_language_msg = translate("Selecciona el idioma: ")
+    spanish_option = translate("Español")
+    english_option = translate("Inglés")
 
-# Usa contenedores independientes para cada botón
-container_es = st.container()
-container_en = st.container()
+    # Usa contenedores independientes para cada botón
+    container_es = st.container()
+    container_en = st.container()
 
-# Botón para Español en su propio contenedor
-if container_es.button(spanish_option):
-    language = "español"
+    # Botón para Español en su propio contenedor
+    if container_es.button(spanish_option):
+        language = "español"
 
-# Botón para Inglés en su propio contenedor
-if container_en.button(english_option):
-    language = "inglés"
+    # Botón para Inglés en su propio contenedor
+    if container_en.button(english_option):
+        language = "inglés"
 
 
 if "messages" not in st.session_state:
