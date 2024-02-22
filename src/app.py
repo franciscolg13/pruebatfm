@@ -22,6 +22,11 @@ page = """
 [data-testid=stAppViewContainer]{
     background-color: #169E79
 }
+.radio-button-container {
+            background-color: #FFFFFF;  /* Set the background color */
+            padding: 10px;  /* Add padding for spacing */
+            border-radius: 10px;  /* Add border-radius for rounded corners */
+        }
 </style>
 """
 
@@ -209,8 +214,9 @@ select_language_msg = translate("Selecciona el idioma: ")
 spanish_option = translate("Español")
 english_option = translate("Inglés")
 
-option = st.sidebar.radio("Seleccionar idioma: ",(spanish_option, english_option), key='select_language', label_visibility="hidden")
-
+option = st.sidebar.radio("Seleccionar idioma: ",(spanish_option, english_option),
+                          key='select_language', label_visibility="hidden",
+                          container_class="radio-button-container")
 if option == spanish_option:
     language = "español"
 elif option == english_option:
