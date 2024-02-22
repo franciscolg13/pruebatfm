@@ -16,10 +16,15 @@ st.set_page_config(
     page_icon=ruta_imagen_local_pelota,
 )
 
-page= """
+page = """
 <style>
 [data-testid=stAppViewContainer]{
-background-color: #169E79
+    background-color: #169E79
+}
+
+#rounded-logo {
+    border-radius: 15px;  /* Ajusta el radio de las esquinas según sea necesario */
+    overflow: hidden;  /* Asegura que las esquinas redondeadas sean visibles */
 }
 </style>
 """
@@ -242,4 +247,3 @@ if "messages" in st.session_state:
             st.chat_message("assistant",avatar="⚽").write(translate(newPrediction))
             st.session_state["messages"].append({"role":"assistant", "avatar":"⚽" ,"content":translate("Si quiere analizar otro jugador introduzca su nombre")})
             st.chat_message("assistant",avatar="⚽").write(translate("Si quiere analizar otro jugador introduzca su nombre"))
-
