@@ -218,6 +218,7 @@ with col2:
 
     # Usa contenedores independientes para cada botón
     
+    st.set_column_width("colu2", 400)
 
     # Botón para Español en su propio contenedor
     with colu1:
@@ -226,7 +227,8 @@ with col2:
         container_es = st.container()
         if container_es.button(spanish_option):
             language = "español"
-
+    with colu3:
+        ()
     # Botón para Inglés en su propio contenedor
     with colu4:
         container_en = st.container()
