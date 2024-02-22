@@ -22,8 +22,9 @@ page = """
     background-color: #169E79
 }
 
-[data-testid="stImage"][alt="rounded-logo"] {
-    border-radius: 50px;  
+.stImg {
+    border-radius: 15px;  
+    overflow: hidden; 
 }
 </style>
 """
@@ -201,7 +202,7 @@ with col3:
 
 # Colocar la imagen en la columna central
 with col2:
-    st.image(ruta_imagen_local, width=200, use_column_width=True, output_format="PNG", key='rounded-logo', alt='rounded-logo')
+    st.image(ruta_imagen_local, width=200, use_column_width=True, output_format="PNG", key='rounded-logo', alt='rounded-logo',  channels="RGB", format="PNG", use_container_width=True, clamp=False)
 
 
 
