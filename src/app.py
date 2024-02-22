@@ -216,8 +216,8 @@ spanish_option = translate("Español")
 english_option = translate("Inglés")
 
 # Usa contenedores independientes para cada botón
-container_es = st.sidebar.container()
-container_en = st.sidebar.container()
+container_es = st.container()
+container_en = st.container()
 
 # Botón para Español en su propio contenedor
 if container_es.button(spanish_option):
@@ -226,11 +226,7 @@ if container_es.button(spanish_option):
 # Botón para Inglés en su propio contenedor
 if container_en.button(english_option):
     language = "inglés"
-# 
-# if option == spanish_option:
-#     language = "español"
-# elif option == english_option:
-#     language = "inglés"
+
 
 if "messages" not in st.session_state:
   st.session_state["messages"] = [{"role":"assistant","avatar":"⚽" ,"content":translate("¡Hola! Soy el asistente de ExpectedFoot, tu analizador de jugadores.")}]
