@@ -202,7 +202,7 @@ with col3:
 
 # Colocar la imagen en la columna central
 with col2:
-    st.image(ruta_imagen_local, width=200,use_column_width=True)
+    st.image(ruta_imagen_local, width=200, use_column_width=True, output_format="PNG", key='rounded-logo')
 
 
 
