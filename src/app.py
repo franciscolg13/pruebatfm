@@ -13,18 +13,13 @@ ruta_imagen_local = os.path.join("media", "logo.png")
 ruta_imagen_local_pelota = os.path.join("media", "logo_pelota.png")
 
 st.set_page_config(
-    page_icon=ruta_imagen_local,
+    page_icon=ruta_imagen_local_pelota,
 )
 
 page = """
 <style>
 [data-testid=stAppViewContainer]{
     background-color: #169E79
-}
-
-.rounded-logo-container {
-    border-radius: 15px; 
-    overflow: hidden;  
 }
 </style>
 """
@@ -202,7 +197,8 @@ with col3:
 
 # Colocar la imagen en la columna central
 with col2:
-    st.markdown(f'<div class="rounded-logo-container"><img src="{ruta_imagen_local}" width="200"></div>', unsafe_allow_html=True)
+    st.image(ruta_imagen_local, width=200,use_column_width=True)
+
 
 
 
