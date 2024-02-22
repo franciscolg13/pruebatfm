@@ -10,15 +10,16 @@ modelo_ruta = 'model/xg_model_decision_tree_regressor.pkl'
 xg_model_decision_tree_regressor = joblib.load(modelo_ruta)
 
 st.markdown(
-    """
+    f"""
     <style>
-        body {
+        body {{
             background-color: #12EAAF;
-        }
+        }}
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 def contiene_solo_letras(cadena):
     return all(caracter.isalpha() or caracter.isspace() for caracter in cadena)
