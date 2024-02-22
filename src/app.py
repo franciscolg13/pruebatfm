@@ -213,7 +213,7 @@ with col2:
     colu1, colu2, colu3, colu4 = st.columns([1.5,4,1,4])
 
     select_language_msg = translate("Selecciona el idioma: ")
-    spanish_option = translate("Spanish")
+    spanish_option = translate("Español")
     english_option = translate("English")
 
     # Botón para Español en su propio contenedor
