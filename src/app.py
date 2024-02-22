@@ -22,9 +22,9 @@ page = """
     background-color: #169E79
 }
 
-.stImg {
-    border-radius: 15px;  
-    overflow: hidden; 
+.rounded-logo-container {
+    border-radius: 15px; 
+    overflow: hidden;  
 }
 </style>
 """
@@ -202,8 +202,7 @@ with col3:
 
 # Colocar la imagen en la columna central
 with col2:
-    st.image(ruta_imagen_local, width=200, use_column_width=True, output_format="PNG", key='rounded-logo', alt='rounded-logo',  channels="RGB", format="PNG", use_container_width=True, clamp=False)
-
+    st.markdown(f'<div class="rounded-logo-container"><img src="{ruta_imagen_local}" width="200"></div>', unsafe_allow_html=True)
 
 
 
