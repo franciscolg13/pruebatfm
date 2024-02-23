@@ -232,7 +232,7 @@ german_option="Deutsch"
     
 with colu1:
     container_es = st.container()
-    if container_es.button(spanish_option,key="A"):
+    if container_es.button(spanish_option, key="A"):
         st.session_state["language"] = "español"
 with colu2:
     container_en = st.container()
